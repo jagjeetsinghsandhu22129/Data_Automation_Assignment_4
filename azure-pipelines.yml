@@ -6,7 +6,7 @@ pool:
 
 variables:
   #sqlServerName: 'jsdbserver.mysql.database.azure.com.database.windows.net'
-  sqlServerName: 'jsdbserver'
+  sqlServerName: 'jsdbserver.database.windows.net'
   databaseName: 'jsfirstdb'
   adminUser: 'rootdb'
   adminPassword: 'Secret55'
