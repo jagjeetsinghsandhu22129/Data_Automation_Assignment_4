@@ -30,5 +30,5 @@ stages:
             displayName: Run update_table.sql
           - script: |
               echo "Validating schema update"
-              sqlcmd -S $(sqlServerName) -d $(databaseName) -U $(adminUser) -P $(adminPassword) -Q "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Users' AND COLUMN_NAME = 'age';"
+              sqlcmd -S $(sqlServerName) -d $(databaseName) -U $(adminUser) -P $(adminPassword) -Q "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Users_Data' AND COLUMN_NAME = 'age';"
             displayName: Validate Schema Update
