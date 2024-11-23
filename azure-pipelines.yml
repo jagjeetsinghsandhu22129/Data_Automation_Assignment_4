@@ -7,14 +7,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  #sqlServerName: 'jsdbserver.mysql.database.azure.com'  # Replace with your actual Azure SQL Server Name
-  #databaseName: 'jsfirstdb'  # Replace with your database name
-  #adminUser: 'rootdb'  # Replace with your DB admin username
-  #adminPassword: 'Secret55'  # Replace with your DB admin password
-  MYSQL_HOST: ${{ secrets.DB_HOST }}
-  MYSQL_USER: ${{ secrets.DB_ADMIN_USER }}
-  MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
-  MYSQL_DB: ${{ secrets.DB_NAME_2 }}
+  sqlServerName: 'jsdbserver.mysql.database.azure.com'  # Replace with your actual Azure SQL Server Name
+  databaseName: 'jsfirstdb'  # Replace with your database name
+  adminUser: 'rootdb'  # Replace with your DB admin username
+  adminPassword: 'Secret55'  # Replace with your DB admin password
+  #MYSQL_HOST: ${{ secrets.DB_HOST }}
+  #MYSQL_USER: ${{ secrets.DB_ADMIN_USER }}
+  #MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  #MYSQL_DB: ${{ secrets.DB_NAME_2 }}
 
 stages:
   - stage: DeployDatabase
