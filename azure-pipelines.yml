@@ -5,8 +5,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  sqlServerName: 'jsdbserver.mysql.database.azure.com.database.windows.net'
-  databaseName: 'jsmysqldb'
+  #sqlServerName: 'jsdbserver.mysql.database.azure.com.database.windows.net'
+  sqlServerName: 'jsdbserver'
+  databaseName: 'jsfirstdb'
   adminUser: 'rootdb'
   adminPassword: 'Secret55'
 
