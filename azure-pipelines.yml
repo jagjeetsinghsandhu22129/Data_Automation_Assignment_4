@@ -1,0 +1,34 @@
+trigger:
+  - main  # Trigger pipeline on changes to the 'main' branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  sqlServerName: 'jsdbserver.mysql.database.azure.com.database.windows.net'
+  databaseName: 'jsmysqldb'
+  adminUser: 'rootdb'
+  adminPassword: 'Secret55'
+
+stages:
+  - stage: DeployDatabase
+    displayName: Deploy Database
+    jobs:
+      - job: DeploySQL
+        displayName: Execute SQL Scripts
+        steps:
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '3.x'
+          - script: |
+              echo "Deploying create_table.sql"
+              sqlcmd -S $(sqlServerName) -d $(databaseName) -U $(adminUser) -P $(adminPassword) -i create_table.sql
+            displayName: Run create_table.sql
+          - script: |
+              echo "Deploying update_table.sql"
+              sqlcmd -S $(sqlServerName) -d $(databaseName) -U $(adminUser) -P $(adminPassword) -i update_table.sql
+            displayName: Run update_table.sql
+          - script: |
+              echo "Validating schema update"
+              sqlcmd -S $(sqlServerName) -d $(databaseName) -U $(adminUser) -P $(adminPassword) -Q "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Users' AND COLUMN_NAME = 'age';"
+            displayName: Validate Schema Update
